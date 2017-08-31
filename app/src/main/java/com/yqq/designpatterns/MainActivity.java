@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.yqq.designpatterns.behaviour.Adapter.ClassAdaptee;
-import com.yqq.designpatterns.behaviour.Adapter.ClassAdapter;
 import com.yqq.designpatterns.behaviour.Adapter.ObjectAdapter;
-
+import com.yqq.designpatterns.behaviour.bridging.Abstraction;
+import com.yqq.designpatterns.behaviour.bridging.AbstractionImpl;
+import com.yqq.designpatterns.behaviour.bridging.IImplementor;
+import com.yqq.designpatterns.behaviour.bridging.ImplementorImpl;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -224,8 +226,17 @@ public class MainActivity extends AppCompatActivity {
 //        ClassAdapter _ClassAdapter=new ClassAdapter();
 //        _ClassAdapter.dowork2("类适配器测试");
 
-        ObjectAdapter _ObjectAdapter=new ObjectAdapter(new ClassAdaptee());
-        _ObjectAdapter.dowork2("对象适配器测试");
+//        ObjectAdapter _ObjectAdapter=new ObjectAdapter(new ClassAdaptee());
+//        _ObjectAdapter.dowork2("对象适配器测试");
+
+        /*******************************桥接模式测试********************************/
+
+        IImplementor implementor=new ImplementorImpl();
+
+        Abstraction _Abstraction=new AbstractionImpl(implementor);
+
+        _Abstraction.doWork("桥接模式测试");
+
 
 
     }
