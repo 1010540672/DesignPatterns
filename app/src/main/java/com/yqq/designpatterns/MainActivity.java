@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.yqq.designpatterns.behaviour.observer.IObserver;
-import com.yqq.designpatterns.behaviour.observer.ObserverImpl;
-import com.yqq.designpatterns.behaviour.observer.SubscriptSubject;
-import com.yqq.designpatterns.behaviour.templatemethod.StudentClass;
-import com.yqq.designpatterns.behaviour.templatemethod.WorkerClass;
-import com.yqq.designpatterns.structural.proxy.Subject;
+import com.yqq.designpatterns.behaviour.Adapter.ClassAdaptee;
+import com.yqq.designpatterns.behaviour.Adapter.ClassAdapter;
+import com.yqq.designpatterns.behaviour.Adapter.ObjectAdapter;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -202,23 +200,33 @@ public class MainActivity extends AppCompatActivity {
 
         /*******************************观察者模式测试********************************/
 
-        //创建观察者
-        IObserver _Observer=new ObserverImpl("李华");
-        IObserver _Observer2=new ObserverImpl("小明");
-        IObserver _Observer3=new ObserverImpl("超人");
-        IObserver _Observer4=new ObserverImpl("悟空");
-        IObserver _Observer5=new ObserverImpl("张三丰");
+//        //创建观察者
+//        IObserver _Observer=new ObserverImpl("李华");
+//        IObserver _Observer2=new ObserverImpl("小明");
+//        IObserver _Observer3=new ObserverImpl("超人");
+//        IObserver _Observer4=new ObserverImpl("悟空");
+//        IObserver _Observer5=new ObserverImpl("张三丰");
+//
+//        //创建主题
+//        com.yqq.designpatterns.behaviour.observer.Subject subject=new SubscriptSubject();
+//        subject.addObserver(_Observer);
+//        subject.addObserver(_Observer2);
+//        subject.addObserver(_Observer3);
+//        subject.addObserver(_Observer4);
+//        subject.addObserver(_Observer5);
+//
+//        subject.notify("=====测试观察者模式开始=====");
+//        subject.removeObserver(_Observer4);
+//        subject.notify("=====测试观察者模式开始=====");
 
-        //创建主题
-        com.yqq.designpatterns.behaviour.observer.Subject subject=new SubscriptSubject();
-        subject.addObserver(_Observer);
-        subject.addObserver(_Observer2);
-        subject.addObserver(_Observer3);
-        subject.addObserver(_Observer4);
-        subject.addObserver(_Observer5);
+        /*******************************适配器模式测试********************************/
 
-        subject.notify("=====测试观察者模式开始=====");
-        subject.removeObserver(_Observer4);
-        subject.notify("=====测试观察者模式开始=====");
+//        ClassAdapter _ClassAdapter=new ClassAdapter();
+//        _ClassAdapter.dowork2("类适配器测试");
+
+        ObjectAdapter _ObjectAdapter=new ObjectAdapter(new ClassAdaptee());
+        _ObjectAdapter.dowork2("对象适配器测试");
+
+
     }
 }
