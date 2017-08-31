@@ -2,15 +2,14 @@ package com.yqq.designpatterns;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
-import com.yqq.designpatterns.structural.Decorator.Decorator;
-import com.yqq.designpatterns.structural.Decorator.DecoratorImpl;
-import com.yqq.designpatterns.structural.Decorator.OriginClass;
-import com.yqq.designpatterns.structural.Decorator.OriginClassImpl;
-import com.yqq.designpatterns.structural.Facade.Facade;
-import com.yqq.designpatterns.structural.Flyweight.FlyweightFactory;
+import com.yqq.designpatterns.behaviour.observer.IObserver;
+import com.yqq.designpatterns.behaviour.observer.ObserverImpl;
+import com.yqq.designpatterns.behaviour.observer.SubscriptSubject;
+import com.yqq.designpatterns.behaviour.templatemethod.StudentClass;
+import com.yqq.designpatterns.behaviour.templatemethod.WorkerClass;
+import com.yqq.designpatterns.structural.proxy.Subject;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -177,7 +176,49 @@ public class MainActivity extends AppCompatActivity {
 
         /*******************************享元模式测试********************************/
 
-        Log.e("享元模式测试", FlyweightFactory.getFlyweight("test")+"");
+//        Log.e("享元模式测试", FlyweightFactory.getFlyweight("test")+"");
 
+
+        /*******************************策略模式测试********************************/
+//        StragetyContext context=null;
+//        context=new StragetyContext(new StragetyImpl());
+//        context.algorithm("===========策略1===========");
+//
+//
+//        context=new StragetyContext(new StragetyImpl2());
+//        context.algorithm("===========策略2===========");
+
+
+
+        /*******************************模板方法模式测试********************************/
+//        StudentClass _StudentClass=new StudentClass();
+//        _StudentClass.OneDay4Live();
+//
+//        WorkerClass _WorkerClass=new WorkerClass();
+//        _WorkerClass.OneDay4Live();
+
+
+
+
+        /*******************************观察者模式测试********************************/
+
+        //创建观察者
+        IObserver _Observer=new ObserverImpl("李华");
+        IObserver _Observer2=new ObserverImpl("小明");
+        IObserver _Observer3=new ObserverImpl("超人");
+        IObserver _Observer4=new ObserverImpl("悟空");
+        IObserver _Observer5=new ObserverImpl("张三丰");
+
+        //创建主题
+        com.yqq.designpatterns.behaviour.observer.Subject subject=new SubscriptSubject();
+        subject.addObserver(_Observer);
+        subject.addObserver(_Observer2);
+        subject.addObserver(_Observer3);
+        subject.addObserver(_Observer4);
+        subject.addObserver(_Observer5);
+
+        subject.notify("=====测试观察者模式开始=====");
+        subject.removeObserver(_Observer4);
+        subject.notify("=====测试观察者模式开始=====");
     }
 }

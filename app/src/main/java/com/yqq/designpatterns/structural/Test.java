@@ -5,4 +5,5 @@ package com.yqq.designpatterns.structural;
  */
 
 public class Test {
+    //解决模块耦合问题
 }
